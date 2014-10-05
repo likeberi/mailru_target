@@ -1,3 +1,4 @@
 Gemfile.lock
 *.sublime-*
 .DS_Store
+pkg
