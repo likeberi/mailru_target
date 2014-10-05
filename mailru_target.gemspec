@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["eugeniy.b@garin-studio.ru"]
   spec.summary       = %q{Target.Mail.ru api via oauth2}
   spec.description   = %q{Target.Mail.ru api via oauth2}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/zhekanax/mailru_target"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
