@@ -1,6 +1,7 @@
 module MailruTarget
   module Request
-    API_URI = "https://target.mail.ru/api"
+    API_URI = "https://target.mail.ru/"
+    SUDO_API_URI = "https://target.mail.ru/users/"
 
     def request(method, path, params = {}, headers = {})
       JSON.parse make_request(method, path, params, headers).to_s
@@ -24,7 +25,7 @@ module MailruTarget
     private
 
     def build(method, path, params, headers)
-      path = API_URI + "/v#{params.delete(:v) || 1}" + path
+      path = get_uri(params) + "api/v#{params.delete(:v) || 1}" + path
       path << ".json" unless path.split("/").last["."]
 
       if params[:token]
@@ -34,9 +35,18 @@ module MailruTarget
       end
 
       case method
-      when :get  then [:get, path, { params: params }.merge(headers)]
-      when :post then [:post, path, params, headers]
+      when :get
+        [:get, path, { params: params }.merge(headers)]
+      when :post
+        params = params[:grant_type] ? params : params.to_json
+        [:post, path, params, headers]
       end
+    end
+
+    def get_uri(params)
+      user = params.delete(:as_user)
+      user ? "#{SUDO_API_URI}#{user}/" : API_URI
     end
   end
 end
+
