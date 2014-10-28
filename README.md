@@ -38,6 +38,11 @@ Initialize new session and request restful resources:
     session = MailruTarget::Session.new(token)
     session.request :get, "/campaigns", status: "active"
 
+Request with 'sudo' mode:
+
+    session = MailruTarget::Session.new(token)
+    session.request :get, "/campaigns", { as_user: "xxxxxxx@agency_client", status: "active" }
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/mailru_target/fork )
