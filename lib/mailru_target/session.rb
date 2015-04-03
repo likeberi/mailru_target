@@ -1,4 +1,4 @@
-# see https://target.mail.ru/doc/api/detailed/
+# see https://target.my.com/doc/api/detailed/
 
 module MailruTarget
   class Session

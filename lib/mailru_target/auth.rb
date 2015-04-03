@@ -1,4 +1,4 @@
-# see https://target.mail.ru/doc/api/oauth2
+# see https://target.my.com/doc/api/oauth2
 
 module MailruTarget
   class Auth
@@ -7,7 +7,7 @@ module MailruTarget
 
       def authorize_url
         state = (0...32).map { (65 + rand(26)).chr }.join.downcase
-        "https://target.mail.ru/oauth2/authorize?response_type=code" <<
+        "https://target.my.com/oauth2/authorize?response_type=code" <<
           "&client_id=#{MailruTarget.client_id}&state=#{state}&scope=#{MailruTarget.scopes}"
       end
 

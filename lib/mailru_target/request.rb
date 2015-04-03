@@ -1,7 +1,7 @@
 module MailruTarget
   module Request
-    API_URI = "https://target.mail.ru/"
-    SUDO_API_URI = "https://target.mail.ru/users/"
+    API_URI = "https://target.my.com/"
+    SUDO_API_URI = "https://target.my.com/users/"
 
     def request(method, path, params = {}, headers = {})
       JSON.parse make_request(method, path, params, headers).to_s
