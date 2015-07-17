@@ -4,6 +4,11 @@ module MailruTarget
   class Session
     include MailruTarget::Request
 
+    include MailruTarget::CampaignsAdapter
+    include MailruTarget::BannersAdapter
+    include MailruTarget::ClientsAdapter
+    include MailruTarget::ImagesAdapter
+
     attr_accessor :token
 
     def initialize(token)
@@ -12,6 +17,14 @@ module MailruTarget
 
     def request(method, path, params = {})
       super method, path, params.merge({ token: token })
+    end
+
+    def call(method, action, params = {})
+      if self.respond_to?("#{method}_#{entity}")
+        send("#{action}_#{method}", params)
+      else
+        Rails.logger.info "[ERROR] Called undefined myTarget API method or entity '#{action}_#{method}' with params: #{params.to_s}"
+      end
     end
   end
 end
