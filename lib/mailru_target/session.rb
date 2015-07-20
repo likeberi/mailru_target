@@ -20,7 +20,7 @@ module MailruTarget
     end
 
     def call(method, action, params = {})
-      if self.respond_to?("#{method}_#{entity}")
+      if self.respond_to?("#{action}_#{method}")
         send("#{action}_#{method}", params)
       else
         Rails.logger.info "[ERROR] Called undefined myTarget API method or entity '#{action}_#{method}' with params: #{params.to_s}"
