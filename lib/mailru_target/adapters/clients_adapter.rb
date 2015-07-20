@@ -1,7 +1,7 @@
 module MailruTarget
   module ClientsAdapter
 
-    def read_clients
+    def read_clients(presenter)
       request(:get, "/clients.json")
     end
 

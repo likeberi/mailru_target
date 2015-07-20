@@ -5,7 +5,7 @@ module MailruTarget
       request(:get, "/campaigns/#{campaign_id}/banners.json")
     end
 
-    def read_banners
+    def read_banners(presenter)
       request(:get, "/banners.json")
     end
 

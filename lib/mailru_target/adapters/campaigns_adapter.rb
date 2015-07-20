@@ -1,7 +1,7 @@
 module MailruTarget
   module CampaignsAdapter
 
-    def read_campaigns
+    def read_campaigns(presenter)
       request(:get, "/campaigns.json")
     end
 
