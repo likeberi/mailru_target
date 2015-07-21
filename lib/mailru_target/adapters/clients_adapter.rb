@@ -9,7 +9,7 @@ module MailruTarget
       request(:post, "/clients.json", presenter)
     end
 
-    def get_token(presenter)
+    def get_token_client(presenter)
       request(
         :post,
         "/oauth2/token.json",
