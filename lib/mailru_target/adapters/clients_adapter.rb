@@ -20,5 +20,16 @@ module MailruTarget
       )
     end
 
+    def refresh_token_client(presenter)
+      request(
+        :post,
+        "/oauth2/token.json",
+        presenter.merge(
+          grant_type: "refresh_token",
+          v: 2
+        )
+      )
+    end
+
   end
 end
