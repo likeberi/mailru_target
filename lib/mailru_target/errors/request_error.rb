@@ -1,5 +1,5 @@
 module MailruTarget
-  class RequestError < Exception
+  class RequestError < StandardError
     def initialize(e)
       super build_message e
     end
