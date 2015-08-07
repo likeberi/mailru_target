@@ -12,7 +12,7 @@ module MailruTarget
         RestClient.send *build(method, path, params, headers)
 
       rescue RestClient::Unauthorized,
-             RestClient::Forbidden, 
+             RestClient::Forbidden,
              RestClient::BadRequest,
              RestClient::ResourceNotFound => e
         raise MailruTarget::RequestError.new e

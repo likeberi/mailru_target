@@ -1,5 +1,10 @@
 require 'restclient'
 require 'json'
+require 'mailru_target/adapters/banners_adapter'
+require 'mailru_target/adapters/campaigns_adapter'
+require 'mailru_target/adapters/clients_adapter'
+require 'mailru_target/adapters/images_adapter'
+require 'mailru_target/adapters/packages_adapter'
 
 module MailruTarget
 

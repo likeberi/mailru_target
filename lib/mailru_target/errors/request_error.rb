@@ -1,5 +1,5 @@
 module MailruTarget
-  class RequestError < Exception
+  class RequestError < StandardError
     def initialize(e)
       super build_message e
     end
@@ -8,7 +8,11 @@ module MailruTarget
       
     def build_message(e)
       body = JSON.parse e.response
-      "#{body['error']} : #{body['error_description']}" if body['error']
+      if body['error']
+        "#{body['error']} : #{body['error_description']}"
+      else
+        body.map{ |field, error| "#{field}: #{error}" }.join(", ")
+      end
     rescue
       e.response
     end

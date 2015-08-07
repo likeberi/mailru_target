@@ -1,5 +1,5 @@
-module MailRu
-  class ConnectionError < Exception
+module MailruTarget
+  class ConnectionError < StandardError
     def initialize(e)
       @exception = e
     end
