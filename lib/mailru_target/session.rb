@@ -9,6 +9,7 @@ module MailruTarget
     include MailruTarget::ClientsAdapter
     include MailruTarget::ImagesAdapter
     include MailruTarget::PackagesAdapter
+    include MailruTarget::StatisticsAdapter
 
     attr_accessor :token
 
